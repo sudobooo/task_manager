@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = "Task Manager"
+authors = ["sudobooo <marsdoghelena@gmail.com>"]
+license = "MIT"
+packages = [
+  { include = "task_manager" },
+]
+classifiers = [
+    "Topic :: Education",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Internet :: WWW/HTTP :: WSGI :: Application"
+]
+repository = "https://github.com/sudobooo/python-project-lvl4"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0.6"
+python-dotenv = "^0.20.0"
+gunicorn = "^20.1.0"
+django-bootstrap4 = "^22.1"
+django-filter = "^22.1"
+django-heroku = "^0.3.1"
+rollbar = "^0.16.3"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+pytest-django = "^4.5.2"
+mypy = "^0.961"
+django-stubs = "^1.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

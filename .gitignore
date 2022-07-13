@@ -1,0 +1,14 @@
+*.egg-info
+__pycache__
+dist/
+*.pyc
+.venv/
+.coverage
+coverage.xml
+.pytest_cache/
+.vim
+*.log
+.env
+htmlcov/
+db.sqlite3
+.idea
