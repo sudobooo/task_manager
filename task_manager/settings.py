@@ -30,9 +30,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'true').lower() in {'yes', '1', 'true'}
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'vibrant-madame-12861.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+    'webserver',
+]
 
 
 # Application definition
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'task_manager',
 ]
 
 MIDDLEWARE = [
