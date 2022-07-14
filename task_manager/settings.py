@@ -35,7 +35,7 @@ DEBUG = os.getenv('DEBUG', 'true').lower() in {'yes', '1', 'true'}
 ALLOWED_HOSTS = [
     'vibrant-madame-12861.herokuapp.com',
     'localhost',
-    '127.0.0.1',
+    '0.0.0.0',
     'webserver',
 ]
 
@@ -128,7 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'task_manager/staticfiles')
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
