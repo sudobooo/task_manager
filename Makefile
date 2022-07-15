@@ -16,5 +16,9 @@ migrate:
 migrations:
 	poetry run python manage.py makemigrations
 
-run:
-	poetry run python manage.py runserver
+heroku_local:
+	poetry run python manage.py collectstatic
+	heroku local
+
+runserver:
+	poetry run python manage.py runserver 127.0.0.1:8000

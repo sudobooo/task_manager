@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '0.0.0.0',
     'webserver',
+    '127.0.0.1',
 ]
 
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task_manager',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -63,11 +65,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
-
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'task_manager/templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,13 +118,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = (
+    ("ru", "Russian"),
+    ("en", "English"),
+)
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'task_manager/locale'),)
 
 
 # Static files (CSS, JavaScript, Images)
@@ -130,6 +139,10 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'task_manager/staticfiles')
 STATIC_URL = "/static/"
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'task_manager/static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

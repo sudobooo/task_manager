@@ -1,0 +1,38 @@
+{{ '<' }}{{'!doctype html>'}}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{%  trans "Менеджер задач" %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#">{%  trans "Менеджер задач" %}</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link p-2" href="#">{% trans "Пользователи" %}</a>
+      </li>
+    </ul>
+    <form class="mt-2 mt-md-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link p-2" href="#">{% trans "Вход" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-2" href="#">{% trans "Регистрация" %}</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+</nav>
+</body>
+</html>
