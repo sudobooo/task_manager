@@ -4,5 +4,5 @@ from task_manager.users.models import ApplicationUsers
 
 class ListOfUsers(ListView):
     model = ApplicationUsers
-    template_name = 'users/list_of_users.html'
+    template_name = 'users/list_of_users'
     context_object_name = 'application_users'
