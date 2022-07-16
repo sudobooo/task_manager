@@ -18,6 +18,7 @@ migrations:
 
 heroku_local:
 	poetry export -f requirements.txt --output requirements.txt
+	pip install -r requirements.txt
 	poetry run python manage.py collectstatic
 	heroku local
 
