@@ -17,6 +17,7 @@ migrations:
 	poetry run python manage.py makemigrations
 
 heroku_local:
+	poetry export -f requirements.txt --output requirements.txt
 	poetry run python manage.py collectstatic
 	heroku local
 
