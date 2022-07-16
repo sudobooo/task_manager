@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<title>{{ list_of_users }}</title>
+ <h1 class="my-4">{% translate 'Пользователи' %}</h1>
+ <table class="bg-white border table table-striped">
+     <tr>
+         <th class="border p-2">ID</th>
+         <th class="border p-2">{% translate 'Имя' %}</th>
+         <th class="border p-2">{% translate 'Полное имя' %}</th>
+         <th class="border p-2">{% translate 'Дата создания' %}</th>
+         <th class="border p-2"></th>
+     </tr>
+     {% for user in application_users %}
+     <tr>
+         <td class="border p-2">{{ user.id }}</td>
+         <td class="border p-2">{{ user.username }}</td>
+         <td class="border p-2">{{ user.first_name}} {{ user.last_name }}</td>
+         <td class="border p-2">{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+         <td class="border p-2">
+             <a class="text-decoration-none" href="#">{% translate 'Изменить' %}</a><br>
+             <a class="text-decoration-none" href="#">{% translate 'Удалить' %}</a>
+         </td>
+     </tr>
+     {% endfor %}
+ </table>
+{% endblock %}
