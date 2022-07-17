@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'true').lower() in {'yes', '1', 'true'}
+DEBUG = os.getenv('DEBUG').lower() in ['true']
 
 ALLOWED_HOSTS = [
     'vibrant-madame-12861.herokuapp.com',
@@ -148,7 +148,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'task_manager/static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 django_heroku.settings(locals(), staticfiles=False)
 
@@ -156,6 +156,5 @@ django_heroku.settings(locals(), staticfiles=False)
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 AUTH_USER_MODEL = 'users.ApplicationUsers'

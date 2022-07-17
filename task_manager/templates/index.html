@@ -2,7 +2,6 @@
 {# Load the tag library #}
 {% load bootstrap4 %}
 
-{# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% load i18n %}
@@ -25,16 +24,17 @@
          <div class="mt-2 mt-md-0">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item">
-                  <a class="nav-link p-2" href="#">{% trans "Вход" %}</a>
+                  <a class="nav-link p-2" href="{% url 'sign_in' %}">{% trans "Вход" %}</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link p-2" href="{% url 'create_user' %}">{% trans "Регистрация" %}</a>
+                  <a class="nav-link p-2" href="{% url 'sign_up' %}">{% trans "Регистрация" %}</a>
                </li>
             </ul>
          </div>
          </div>
       </nav>
       <div class="container wrapper flex-grow-1 mt-5">
+        {% bootstrap_messages %}
         {% block content %}
         {% endblock %}
       </div>

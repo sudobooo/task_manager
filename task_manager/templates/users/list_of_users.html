@@ -2,14 +2,14 @@
 {% load i18n %}
 {% block content %}
 <title>{{ list_of_users }}</title>
- <h1 class="my-4">{% translate 'Пользователи' %}</h1>
+ <h1 class="my-4">{% trans 'Пользователи' %}</h1>
  <table class="table">
    <thead class="thead-dark">
      <tr>
          <th scope="col">ID</th>
-         <th scope="col">{% translate 'Имя' %}</th>
-         <th scope="col">{% translate 'Полное имя' %}</th>
-         <th scope="col">{% translate 'Дата создания' %}</th>
+         <th scope="col">{% trans 'Имя' %}</th>
+         <th scope="col">{% trans 'Полное имя' %}</th>
+         <th scope="col">{% trans 'Дата создания' %}</th>
          <th scope="col"></th>
      </tr>
    </thead>
@@ -21,9 +21,9 @@
          <td>{{ user.first_name}} {{ user.last_name }}</td>
          <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
          <td>
-             <a class="text-decoration-none" href="#">{% translate 'Изменить' %}</a>
+             <a class="text-decoration-none" href="{% url 'update_user' user.id %}">{% trans 'Изменить' %}</a>
              <a>/</a>
-             <a class="text-decoration-none" href="#">{% translate 'Удалить' %}</a>
+             <a class="text-decoration-none" href="{% url 'delete_user' user.id %}">{% trans 'Удалить' %}</a>
          </td>
      </tr>
    </tbody>
