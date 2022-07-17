@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="my-4">{% trans 'Вход' %}</h1>
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         <p>
             {% bootstrap_form form %}

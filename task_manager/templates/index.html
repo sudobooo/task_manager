@@ -3,7 +3,7 @@
 {% load bootstrap4 %}
 
 {% bootstrap_css %}
-{% bootstrap_javascript %}
+{% bootstrap_javascript jquery='full' %}
 {% load i18n %}
 
 <html lang="ru">
@@ -33,8 +33,10 @@
          </div>
          </div>
       </nav>
-      <div class="container wrapper flex-grow-1 mt-5">
+      <div class="container">
         {% bootstrap_messages %}
+      </div>
+      <div class="container wrapper flex-grow-1 mt-5">
         {% block content %}
         {% endblock %}
       </div>

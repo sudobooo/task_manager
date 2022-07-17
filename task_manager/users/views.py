@@ -32,7 +32,7 @@ class SignUp(CreateView, SuccessMessageMixin):
     template_name = 'users/sign_up.html'
     form_class = SignUpForm
     success_url = reverse_lazy('sign_in')
-    success_message = gettext_lazy('Пользователь создан')
+    success_message = gettext_lazy('Пользователь успешно зарегистрирован')
 
 
 class UpdateUser(LoginRequiredMixin,
