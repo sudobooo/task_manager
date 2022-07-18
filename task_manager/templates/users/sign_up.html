@@ -6,11 +6,9 @@
     <h1 class="my-4">{% trans 'Регистрация' %}</h1>
     <form method="POST">
         {% csrf_token %}
-        <p>
+        <div>
             {% bootstrap_form form %}
-        </p>
-        <div class="form-group">
-           <input class="btn btn-primary" type="submit" value={% trans 'Зарегистрировать' %}>
         </div>
+        <input class="btn btn-primary" type="submit" value={% trans 'Зарегистрировать' %}>
     </form>
 {% endblock %}
