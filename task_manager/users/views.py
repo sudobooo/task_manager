@@ -24,8 +24,9 @@ class ListOfUsers(ListView):
     context_object_name = 'application_users'
 
 
-class SignUp(CreateView, SuccessMessageMixin):
+class SignUp(CreateView, SuccessMessageMixin, FormView):
 
+    model = ApplicationUsers
     template_name = 'users/sign_up.html'
     form_class = SignUpForm
     success_url = reverse_lazy('sign_in')
@@ -36,7 +37,7 @@ class UpdateUser(LoginRequiredMixin,
                  SuccessMessageMixin,
                  UserPassesTestMixin,
                  UpdateView,
-                 FormView, ):
+                 FormView):
 
     model = ApplicationUsers
     template_name = 'users/update_user.html'
