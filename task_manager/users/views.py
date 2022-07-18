@@ -43,7 +43,7 @@ class UpdateUser(LoginRequiredMixin,
     template_name = 'users/update_user.html'
     form_class = SignUpForm
     success_url = reverse_lazy('list_of_users')
-    success_message = gettext_lazy('Пользователь изменён')
+    success_message = gettext_lazy('Пользователь успешно изменён')
 
     def test_func(self):
         return self.request.user == self.get_object()
