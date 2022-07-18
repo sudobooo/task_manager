@@ -75,5 +75,12 @@ class TestApplicationUsers(TestCase):
             'password1': 'FakePass654!#'
         }
 
-        response1 = self.client.post(url, correct_data, follow=True)
-        self.assertEqual(response1.status_code, 200)
+        response = self.client.post(url, correct_data, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_sign_out(self):
+        url = reverse('sign_out')
+
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/')
