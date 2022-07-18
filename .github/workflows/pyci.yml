@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,7 +32,6 @@ jobs:
         uses: paambaati/codeclimate-action@v2.7.4
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
         with:
           coverageCommand: make test-coverage
           debug: true
