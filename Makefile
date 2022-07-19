@@ -14,7 +14,7 @@ migrate:
 	poetry run python manage.py makemigrations
 	poetry run python manage.py migrate
 
-push_heroku:
+push-heroku:
 	poetry export -f requirements.txt --output requirements.txt
 	poetry run python manage.py collectstatic
 	heroku run python manage.py makemigrations
@@ -23,8 +23,8 @@ push_heroku:
 runserver:
 	poetry run python manage.py runserver 127.0.0.1:8000
 
-transprepare:
-	poetry run django-admin makemessages
+prepare-translation:
+	django-admin makemessages --ignore="static" --ignore=".env"  -l en
 
-transcompile:
+complete-translation:
 	poetry run django-admin compilemessages
