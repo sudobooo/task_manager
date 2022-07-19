@@ -1,3 +1,2 @@
-*.js linguist-language=python
-*.css linguist-language=pyhton
-*.html linguist-language=python
+staticfiles linguist-language=python
+static linguist-language=pyhton
