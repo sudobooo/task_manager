@@ -1,2 +1,2 @@
-staticfiles linguist-language=python
-static linguist-language=pyhton
+*.js linguist-language=python
+*.css linguist-language=pyhton
