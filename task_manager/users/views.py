@@ -53,6 +53,13 @@ class UpdateUser(LoginRequiredMixin,
                                              другого пользователя.'))
         return redirect('list_of_users')
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(self.request, gettext('Вы не авторизованы!\
+                                                 Пожалуйста, выполните вход.'))
+            return redirect('sign_in')
+        return super().dispatch(request, *args, **kwargs)
+
 
 class DeleteUser(LoginRequiredMixin,
                  SuccessMessageMixin,
@@ -71,6 +78,13 @@ class DeleteUser(LoginRequiredMixin,
         messages.error(self.request, gettext('У вас нет прав для изменения\
                                              другого пользователя.'))
         return redirect('list_of_users')
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(self.request, gettext('Вы не авторизованы!\
+                                                 Пожалуйста, выполните вход.'))
+            return redirect('sign_in')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class SignIn(SuccessMessageMixin, LoginView):
