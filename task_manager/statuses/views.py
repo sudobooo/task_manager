@@ -22,11 +22,12 @@ class ListOfStatuses(LoginRequiredMixin, ListView):
     model = Statuses
     template_name = 'statuses/list_of_statuses.html'
     context_object_name = 'statuses'
+    redirect_field_name = 'sign_in'
 
     def handle_no_permission(self):
         messages.error(self.request, gettext('Вы не авторизованы! Пожалуйста,\
                                               выполните вход.'))
-        return redirect('sign_in')
+        return redirect(self.redirect_field_name)
 
 
 class CreateStatus(LoginRequiredMixin, SuccessMessageMixin,
@@ -37,11 +38,12 @@ class CreateStatus(LoginRequiredMixin, SuccessMessageMixin,
     form_class = StatusesForm
     success_message = gettext_lazy('Статус успешно создан')
     success_url = reverse_lazy('list_of_statuses')
+    redirect_field_name = 'sign_in'
 
     def handle_no_permission(self):
         messages.error(self.request, gettext('Вы не авторизованы! Пожалуйста,\
                                               выполните вход.'))
-        return redirect('sign_in')
+        return redirect(self.redirect_field_name)
 
 
 class UpdateStatus(LoginRequiredMixin, SuccessMessageMixin,
@@ -52,11 +54,12 @@ class UpdateStatus(LoginRequiredMixin, SuccessMessageMixin,
     form_class = StatusesForm
     success_url = reverse_lazy('list_of_statuses')
     success_message = gettext_lazy('Статус успешно изменён')
+    redirect_field_name = 'sign_in'
 
     def handle_no_permission(self):
         messages.error(self.request, gettext('Вы не авторизованы! Пожалуйста,\
                                               выполните вход.'))
-        return redirect('list_of_statuses')
+        return redirect(self.redirect_field_name)
 
 
 class DeleteStatus(LoginRequiredMixin, SuccessMessageMixin,
@@ -66,8 +69,9 @@ class DeleteStatus(LoginRequiredMixin, SuccessMessageMixin,
     template_name = 'statuses/delete_status.html'
     success_url = reverse_lazy('list_of_statuses')
     success_message = gettext_lazy('Статус успешно удалён')
+    redirect_field_name = 'sign_in'
 
     def handle_no_permission(self):
         messages.error(self.request, gettext('Вы не авторизованы! Пожалуйста,\
                                               выполните вход.'))
-        return redirect('list_of_statuses')
+        return redirect(self.redirect_field_name)
