@@ -84,7 +84,7 @@ class ViewTask(LoginRequiredMixin,
                DetailView):
     model = Tasks
     template_name = 'tasks/view_task.html'
-    context_object_name = 'view_task'
+    context_object_name = 'task'
     redirect_field_name = 'sign_in'
 
     def handle_no_permission(self):
