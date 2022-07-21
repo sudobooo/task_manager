@@ -1,20 +1,22 @@
 from task_manager.users.models import ApplicationUsers
 from task_manager.users.forms import SignInForm, SignUpForm
+from task_manager.mixins import (CheckSignInMixin,
+                                 CheckDeleteMixin,
+                                 CheckUpdateMixin)
 
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy, gettext
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
 from django.views.generic.list import ListView
-from django.views.generic.edit import (
-    CreateView,
-    UpdateView,
-    DeleteView,
-    FormView
-)
+from django.views.generic.edit import (CreateView,
+                                       UpdateView,
+                                       DeleteView,
+                                       FormView)
+
+NO_RULES = 'У вас нет прав для изменения другого пользователя.'
 
 
 class ListOfUsers(ListView):
@@ -33,58 +35,31 @@ class SignUp(CreateView, SuccessMessageMixin, FormView):
     success_message = gettext('Пользователь успешно зарегистрирован')
 
 
-class UpdateUser(LoginRequiredMixin,
-                 SuccessMessageMixin,
-                 UserPassesTestMixin,
-                 UpdateView,
-                 FormView):
+class UpdateUser(LoginRequiredMixin, CheckUpdateMixin,
+                 CheckSignInMixin, SuccessMessageMixin,
+                 UpdateView, FormView):
 
     model = ApplicationUsers
     template_name = 'users/update_user.html'
     form_class = SignUpForm
     success_url = reverse_lazy('list_of_users')
     success_message = gettext_lazy('Пользователь успешно изменён')
-
-    def test_func(self):
-        return self.request.user == self.get_object()
-
-    def handle_no_permission(self):
-        messages.error(self.request, gettext('У вас нет прав для изменения\
-                                             другого пользователя.'))
-        return redirect('list_of_users')
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            messages.error(self.request, gettext('Вы не авторизованы!\
-                                                 Пожалуйста, выполните вход.'))
-            return redirect('sign_in')
-        return super().dispatch(request, *args, **kwargs)
+    redirect_error_update_name = 'list_of_users'
+    error_update_message = NO_RULES
 
 
-class DeleteUser(LoginRequiredMixin,
-                 SuccessMessageMixin,
-                 UserPassesTestMixin,
-                 DeleteView):
+class DeleteUser(LoginRequiredMixin, CheckUpdateMixin, CheckSignInMixin,
+                 CheckDeleteMixin, SuccessMessageMixin,
+                 DeleteView, FormView):
 
     model = ApplicationUsers
     template_name = 'users/delete_user.html'
-    success_url = reverse_lazy('list_of_users')
-    success_message = gettext_lazy('Пользователь успешно удалён')
-
-    def test_func(self):
-        return self.request.user == self.get_object()
-
-    def handle_no_permission(self):
-        messages.error(self.request, gettext('У вас нет прав для изменения\
-                                             другого пользователя.'))
-        return redirect('list_of_users')
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            messages.error(self.request, gettext('Вы не авторизованы!\
-                                                 Пожалуйста, выполните вход.'))
-            return redirect('sign_in')
-        return super().dispatch(request, *args, **kwargs)
+    redirect_error_update_name = 'list_of_users'
+    error_update_message = NO_RULES
+    error_delete_message = 'Невозможно удалить пользователя,\
+                            потому что он используется'
+    success_delete_message = 'Пользователь успешно удалён'
+    success_delete_url = 'list_of_users'
 
 
 class SignIn(SuccessMessageMixin, LoginView):

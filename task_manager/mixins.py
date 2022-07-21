@@ -9,7 +9,7 @@ from django.utils.translation import gettext
 
 class CheckSignInMixin(AccessMixin):
     redirect_sign_in_name = 'sign_in'
-    error_sign_in_message = ''
+    error_sign_in_message = 'Вы не авторизованы! Пожалуйста, выполните вход.'
     request = ''
 
     def handle_no_permission(self):
