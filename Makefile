@@ -17,8 +17,8 @@ migrate:
 push-heroku:
 	poetry export -f requirements.txt --output requirements.txt
 	poetry run python manage.py collectstatic
-	heroku run python manage.py makemigrations
-	heroku run python manage.py migrate
+	heroku run python manage.py makemigrations -a vibrant-madame-12861
+	heroku run python manage.py migrate -a vibrant-madame-12861
 
 runserver:
 	poetry run python manage.py runserver 127.0.0.1:8000
