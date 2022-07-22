@@ -10,14 +10,14 @@
         email: ''
         is_staff: false
         is_active: true
-        date_joined: 1991-07-10 13:55:29.560867+00:00
+        date_joined: 1991-07-10 16:55:29.560867+00:00
         groups: []
         user_permissions: []
 -   model: users.applicationusers
     pk: 2
     fields:
         password: FakePass789!#
-        last_login: 2009-01-20 14:57:20.003257+00:00
+        last_login: 2009-01-20 19:57:20.003257+00:00
         is_superuser: false
         username: bush
         first_name: George
@@ -25,6 +25,21 @@
         email: ''
         is_staff: false
         is_active: true
-        date_joined: 2001-01-20 12:38:44.494467+00:00
+        date_joined: 2001-01-20 13:38:44.494467+00:00
+        groups: []
+        user_permissions: []
+-   model: users.applicationusers
+    pk: 3
+    fields:
+        password: FakePass098!#
+        last_login: 2015-01-20 14:57:20.003257+00:00
+        is_superuser: false
+        username: Serge
+        first_name: TestFirstName
+        last_name: TestLastName
+        email: ''
+        is_staff: false
+        is_active: true
+        date_joined: 2001-01-20 15:38:44.494467+00:00
         groups: []
         user_permissions: []

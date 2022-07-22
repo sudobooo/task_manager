@@ -44,7 +44,7 @@ class UpdateUser(LoginRequiredMixin, CheckUpdateMixin,
     form_class = SignUpForm
     success_url = reverse_lazy('list_of_users')
     success_message = gettext_lazy('Пользователь успешно изменён')
-    redirect_error_update_name = 'list_of_users'
+    redirect_error_update = 'list_of_users'
     error_update_message = NO_RULES
 
 
@@ -54,12 +54,12 @@ class DeleteUser(LoginRequiredMixin, CheckUpdateMixin, CheckSignInMixin,
 
     model = ApplicationUsers
     template_name = 'users/delete_user.html'
-    redirect_error_update_name = 'list_of_users'
+    redirect_error_update = 'list_of_users'
     error_update_message = NO_RULES
     error_delete_message = 'Невозможно удалить пользователя,\
                             потому что он используется'
     success_delete_message = 'Пользователь успешно удалён'
-    success_delete_url = 'list_of_users'
+    redirect_delete_url = 'list_of_users'
 
 
 class SignIn(SuccessMessageMixin, LoginView):
