@@ -20,7 +20,7 @@ class CheckSignInMixin(AccessMixin):
 class CheckDeleteMixin(AccessMixin):
     error_delete_message = ''
     success_delete_message = ''
-    success_delete_url = ''
+    redirect_delete_url = ''
 
     def form_valid(self, form):
         try:
@@ -30,11 +30,11 @@ class CheckDeleteMixin(AccessMixin):
         else:
             messages.success(self.request,
                              gettext(self.success_delete_message))
-        return HttpResponseRedirect(reverse_lazy(self.success_delete_url))
+        return HttpResponseRedirect(reverse_lazy(self.redirect_delete_url))
 
 
 class CheckUpdateMixin(AccessMixin):
-    redirect_error_update_name = ''
+    redirect_error_update = ''
     error_update_message = ''
 
     def dispatch(self, request, *args, **kwargs):
