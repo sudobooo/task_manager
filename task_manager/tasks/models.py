@@ -6,6 +6,7 @@ from task_manager.labels.models import Labels
 
 
 class Tasks(models.Model):
+
     name = models.CharField(max_length=150)
     description = models.TextField(blank=True)
 
@@ -23,7 +24,11 @@ class Tasks(models.Model):
                                  on_delete=models.PROTECT,
                                  related_name='task_executor')
     created_at = models.DateTimeField(auto_now_add=True)
-    labels = models.ManyToManyField(Labels, related_name='tasks', blank=True)
+    labels = models.ManyToManyField(Labels,
+                                    related_name='task_label',
+                                    blank=True,
+                                    through='TaskLabels',
+                                    through_fields=('task', 'label'))
 
     def __str__(self):
         return self.name
@@ -31,3 +36,11 @@ class Tasks(models.Model):
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
+
+
+class TaskLabels(models.Model):
+
+    task = models.ForeignKey(Tasks,
+                             on_delete=models.CASCADE)
+    label = models.ForeignKey(Labels,
+                              on_delete=models.PROTECT)

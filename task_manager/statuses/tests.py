@@ -7,7 +7,10 @@ from task_manager.users.models import ApplicationUsers
 
 class TestStatuses(TestCase):
 
-    fixtures = ['statuses.yaml', 'application_users.yaml', 'tasks.yaml']
+    fixtures = ['application_users.yaml',
+                'tasks.yaml',
+                'labels.yaml',
+                'statuses.yaml']
 
     def setUp(self):
 

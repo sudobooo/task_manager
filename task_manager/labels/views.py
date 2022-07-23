@@ -2,7 +2,7 @@ from task_manager.labels.forms import LabelForm
 from task_manager.labels.models import Labels
 from task_manager.mixins import CheckSignInMixin, CheckDeleteMixin
 
-from django.contrib.auth.mixins import LoginRequiredMixin, AccessMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext, gettext_lazy
@@ -37,8 +37,7 @@ class UpdateLabel(LoginRequiredMixin, CheckSignInMixin,
 
 
 class DeleteLabel(LoginRequiredMixin, CheckSignInMixin, CheckDeleteMixin,
-                  SuccessMessageMixin, AccessMixin,
-                  DeleteView, FormView):
+                  SuccessMessageMixin, DeleteView, FormView):
     model = Labels
     template_name = 'labels/delete_label.html'
     error_delete_message = 'Невозможно удалить метку,\

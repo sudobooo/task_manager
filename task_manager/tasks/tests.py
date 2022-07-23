@@ -8,7 +8,10 @@ from task_manager.users.models import ApplicationUsers
 
 class TestTask(TestCase):
 
-    fixtures = ['application_users.yaml', 'statuses.yaml', 'tasks.yaml']
+    fixtures = ['application_users.yaml',
+                'tasks.yaml',
+                'labels.yaml',
+                'statuses.yaml']
 
     def setUp(self) -> None:
         self.first_user = ApplicationUsers.objects.get(pk=1)
