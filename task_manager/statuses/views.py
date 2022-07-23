@@ -6,14 +6,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy
-from django.views.generic.edit import DeletionMixin
-from django.views.generic import (
-    ListView,
-    CreateView,
-    UpdateView,
-    FormView,
-    DeleteView
-)
+from django.views.generic import (ListView,
+                                  CreateView,
+                                  UpdateView,
+                                  FormView,
+                                  DeleteView)
 
 
 class ListOfStatuses(LoginRequiredMixin, CheckSignInMixin, ListView):
@@ -34,7 +31,7 @@ class CreateStatus(LoginRequiredMixin, CheckSignInMixin,
 
 
 class UpdateStatus(LoginRequiredMixin, CheckSignInMixin,
-                   SuccessMessageMixin, UpdateView, FormView):
+                   SuccessMessageMixin, UpdateView):
 
     model = Statuses
     template_name = 'statuses/update_status.html'
@@ -44,7 +41,7 @@ class UpdateStatus(LoginRequiredMixin, CheckSignInMixin,
 
 
 class DeleteStatus(LoginRequiredMixin, CheckSignInMixin, CheckDeleteMixin,
-                   SuccessMessageMixin, DeleteView, DeletionMixin):
+                   SuccessMessageMixin, DeleteView):
 
     model = Statuses
     template_name = 'statuses/delete_status.html'

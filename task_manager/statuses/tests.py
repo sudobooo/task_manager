@@ -7,7 +7,7 @@ from task_manager.users.models import ApplicationUsers
 
 class TestStatuses(TestCase):
 
-    fixtures = ['statuses.yaml', 'application_users.yaml']
+    fixtures = ['statuses.yaml', 'application_users.yaml', 'tasks.yaml']
 
     def setUp(self):
 
@@ -54,6 +54,15 @@ class TestStatuses(TestCase):
         url = reverse('delete_status', args=(self.first_status.pk,))
         response = self.client.post(url, follow=True)
 
+        self.assertRedirects(response, '/statuses/')
+
+    def test_delete_status_with_tasks(self):
+        self.client.force_login(self.user)
+        url = reverse('delete_status', args=(self.first_status.pk,))
+        response = self.client.post(url, follow=True)
+        self.assertTrue(
+            Statuses.objects.filter(pk=self.first_status.id).exists()
+        )
         self.assertRedirects(response, '/statuses/')
 
     def test_unauthorized(self):

@@ -40,5 +40,5 @@ class CheckUpdateMixin(AccessMixin):
     def dispatch(self, request, *args, **kwargs):
         if self.request.user != self.get_object():
             messages.error(self.request, gettext(self.error_update_message))
-            return redirect(reverse_lazy(self.redirect_error_update_name))
+            return redirect(reverse_lazy(self.redirect_error_update))
         return super().dispatch(request, *args, **kwargs)
