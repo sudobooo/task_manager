@@ -51,8 +51,11 @@ class TestStatuses(TestCase):
     def test_delete_status(self):
 
         self.client.force_login(self.user)
-        url = reverse('delete_status', args=(self.first_status.pk,))
+        url = reverse('delete_status', args=(self.second_status.pk,))
         response = self.client.post(url, follow=True)
+
+        with self.assertRaises(Statuses.DoesNotExist):
+            Statuses.objects.get(pk=self.second_status.id)
 
         self.assertRedirects(response, '/statuses/')
 
@@ -60,6 +63,7 @@ class TestStatuses(TestCase):
         self.client.force_login(self.user)
         url = reverse('delete_status', args=(self.first_status.pk,))
         response = self.client.post(url, follow=True)
+
         self.assertTrue(
             Statuses.objects.filter(pk=self.first_status.id).exists()
         )

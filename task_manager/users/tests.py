@@ -11,7 +11,6 @@ class TestApplicationUsers(TestCase):
     def setUp(self):
         self.first_user = ApplicationUsers.objects.get(pk=1)
         self.second_user = ApplicationUsers.objects.get(pk=2)
-        self.third_user = ApplicationUsers.objects.get(pk=3)
         self.client: Client = Client()
 
     def test_sign_up(self):
@@ -50,7 +49,7 @@ class TestApplicationUsers(TestCase):
         self.assertTrue(changed_user.check_password('Test321!#'))
 
     def test_delete_user(self):
-        user = self.third_user
+        user = self.second_user
         self.client.force_login(user)
         url = reverse('delete_user', args=(user.id,))
         response = self.client.post(url, follow=True)

@@ -66,3 +66,11 @@ class TestTask(TestCase):
         response = self.client.post(url, follow=True)
 
         self.assertRedirects(response, '/tasks/')
+
+    def test_delete_task_by_non_author(self):
+        self.client.force_login(self.second_user)
+        url = reverse('delete_task', args=(self.first_task.pk,))
+        response = self.client.post(url, follow=True)
+
+        self.assertTrue(Tasks.objects.filter(pk=self.first_task.pk).exists())
+        self.assertRedirects(response, '/tasks/')
