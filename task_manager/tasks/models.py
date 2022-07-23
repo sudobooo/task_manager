@@ -2,6 +2,7 @@ from django.db import models
 
 from task_manager.statuses.models import Statuses
 from task_manager.users.models import ApplicationUsers
+from task_manager.labels.models import Labels
 
 
 class Tasks(models.Model):
@@ -21,8 +22,8 @@ class Tasks(models.Model):
                                  blank=True,
                                  on_delete=models.PROTECT,
                                  related_name='task_executor')
-
     created_at = models.DateTimeField(auto_now_add=True)
+    labels = models.ManyToManyField(Labels, related_name='tasks', blank=True)
 
     def __str__(self):
         return self.name
