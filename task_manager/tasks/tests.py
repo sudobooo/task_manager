@@ -33,13 +33,11 @@ class TestTask(TestCase):
 
     def test_create_tasks(self):
         self.client.force_login(self.first_user)
-        task = {
-                    'name': 'Написать тесты',
-                    'description': 'Тесты к tasks',
-                    'author': 1,
-                    'executor': 2,
-                    'status': 1
-                    }
+        task = {'name': 'Написать тесты',
+                'description': 'Тесты к tasks',
+                'author': 1,
+                'executor': 2,
+                'status': 1}
 
         response = self.client.post(reverse('create_task'), task, follow=True)
         created_task = Tasks.objects.get(name=task['name'])
