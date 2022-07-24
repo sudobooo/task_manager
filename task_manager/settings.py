@@ -91,7 +91,7 @@ POSTGRES_DATABASES = {
     'PORT': os.getenv('POSTGRES_PORT'),
 }
 
-if os.getenv('DB_ENGINE') in ['True']:
+if os.getenv('DB_POSTGRES') in ['True']:
     DATABASES['default'] = POSTGRES_DATABASES
 
 AUTH_PASSWORD_VALIDATORS = [
