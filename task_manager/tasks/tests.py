@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django_filters import FilterSet
 
 from task_manager.statuses.models import Statuses
 from task_manager.tasks.models import Tasks
@@ -77,3 +78,24 @@ class TestTask(TestCase):
 
         self.assertTrue(Tasks.objects.filter(pk=self.first_task.pk).exists())
         self.assertRedirects(response, '/tasks/')
+
+    def test_filter_status(self):
+
+        status = Tasks._meta.get_field('status')
+        result = FilterSet.filter_for_field(status, 'status')
+
+        self.assertEqual(result.field_name, 'status')
+
+    def test_filter_executor(self):
+
+        status = Tasks._meta.get_field('executor')
+        result = FilterSet.filter_for_field(status, 'executor')
+
+        self.assertEqual(result.field_name, 'executor')
+
+    def test_filter_label(self):
+
+        status = Tasks._meta.get_field('labels')
+        result = FilterSet.filter_for_field(status, 'labels')
+
+        self.assertEqual(result.field_name, 'labels')
