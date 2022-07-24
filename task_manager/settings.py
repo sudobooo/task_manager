@@ -124,6 +124,7 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 django_heroku.settings(locals(), staticfiles=False)
+del DATABASES['default']['OPTIONS']['sslmode']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
