@@ -3,9 +3,7 @@
 
 {% block content %}
 <h1 class="my-4">{% trans 'Метки' %}</h1>
-    <p>
-   <a class="btn btn-primary" href="{% url 'create_label' %}" role="button">{% trans 'Создать Метку' %}</a>
-    </p>
+   <a class="nav-link" href="{% url 'create_label' %}">{% trans 'Создать Метку' %}</a>
  <table class="table">
    <thead class="thead-dark">
      <tr>

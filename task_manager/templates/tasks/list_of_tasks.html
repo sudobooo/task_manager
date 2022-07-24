@@ -4,9 +4,7 @@
 
 {% block content %}
 <h1 class="my-4">{% trans 'Задачи' %}</h1>
-    <p>
-   <a class="btn btn-primary" href="{% url 'create_task' %}" role="button">{% trans 'Создать задачу' %}</a>
-    </p>
+   <a class="nav-link" href="{% url 'create_task' %}">{% trans 'Создать задачу' %}</a>
     <div class="card mb-3">
         <div class="card-body bg-light text-dark">
             <form class="form-inline center my-auto" method="get">
