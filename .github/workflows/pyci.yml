@@ -8,6 +8,7 @@ jobs:
   build:
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DB_ENGINE: ${{ secrets.DB_ENGINE }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
