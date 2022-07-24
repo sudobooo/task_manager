@@ -28,7 +28,7 @@ make install
 
 For the application to work, you need to create a file .env in the root of the project.
 
-Then open the file and set any value for the SECRET_KEY=<anything>
+Then open the file and set any value for the SECRET_KEY='anything'
 
 If you want to enable debug mode, then set for the DEBUG=Yes
 
@@ -41,12 +41,18 @@ make runserver
 ### Database
 
 If you want to use the PostgreSQL, then set for environment variable the DB_POSTGRES=True
+
 Then the required values for the following variables:
-POSTGRES_NAME=<database_name>
-POSTGRES_USER=<database_user>
-POSTGRES_PASSWORD=<user_password>
-POSTGRES_HOST=<database_host>
-POSTGRES_PORT=<database_port>
+
+POSTGRES_NAME='database_name'
+
+POSTGRES_USER='database_user'
+
+POSTGRES_PASSWORD='user_password'
+
+POSTGRES_HOST='database_host'
+
+POSTGRES_PORT='database_port'
 
 ### Run migrations
 
@@ -58,11 +64,11 @@ make migrate
 
 Rollbar is used for logging.
 
-Set for environment variable the ACCESS_TOKEN=<token_of_your_account_in_rollbar>
+Set for environment variable the ACCESS_TOKEN='token_of_your_account_in_rollbar'
 
 ### Language
 
-If you want to change the language to English, then in task_manager/settings change the value of LANGUAGE_CODE to "en"
+If you want to change the language to English, then in task_manager/settings change the value of LANGUAGE_CODE=en
 
 If you want to add another language, then use the following [guide](https://djangowaves.com/tutorial/multiple-languages-in-Django).
 Start right away with the chapter "Create translations with Django"
