@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_NAME'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
@@ -93,7 +93,6 @@ SQLITE_DATABASES = {
 
 if os.getenv('DB_ENGINE') in ['True']:
     DATABASES['default'] = SQLITE_DATABASES
-print(os.getenv('DB_ENGINE') in ['True'])
 
 AUTH_PASSWORD_VALIDATORS = [
     {
