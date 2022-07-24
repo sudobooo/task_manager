@@ -2,6 +2,7 @@ from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Tasks
 from task_manager.users.models import ApplicationUsers
 from task_manager.mixins import CheckSignInMixin
+from task_manager.tasks.filters import TaskFilter
 
 from django_filters.views import FilterView
 from django.contrib import messages
@@ -19,6 +20,7 @@ class ListOfTasks(LoginRequiredMixin, CheckSignInMixin,
     model = Tasks
     template_name = 'tasks/list_of_tasks.html'
     context_object_name = 'list_Of_tasks'
+    filterset_class = TaskFilter
 
 
 class CreateTask(LoginRequiredMixin, CheckSignInMixin,
