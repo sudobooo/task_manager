@@ -91,8 +91,9 @@ SQLITE_DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 
-if os.getenv('DB_ENGINE') == 'True':
+if os.getenv('DB_ENGINE') in ['True']:
     DATABASES['default'] = SQLITE_DATABASES
+print(os.getenv('DB_ENGINE') in ['True'])
 
 AUTH_PASSWORD_VALIDATORS = [
     {
