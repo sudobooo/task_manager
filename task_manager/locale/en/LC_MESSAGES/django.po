@@ -248,3 +248,14 @@ msgstr "You are sign in"
 #: task_manager/users/views.py:80
 msgid "Вы разлогинены"
 msgstr "You are sign out"
+
+#: task_manager/templates/main.html
+msgid "Организуйте работу и жизнь"
+msgstr "Organize your work and life"
+
+msgid "Организовать"
+msgstr "Organize"
+
+#: task_manager/templates/index.html
+msgid "Исходный код"
+msgstr "Source"
