@@ -24,7 +24,7 @@ msgstr ""
 #: task_manager/templates/tasks/list_of_tasks.html:23
 #: task_manager/templates/users/list_of_users.html:10
 msgid "Имя"
-msgstr ""
+msgstr "Name"
 
 #: task_manager/labels/views.py:26
 msgid "Метка успешно создана"
