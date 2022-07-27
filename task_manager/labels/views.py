@@ -5,7 +5,7 @@ from task_manager.mixins import CheckSignInMixin, CheckDeleteMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.utils.translation import gettext, gettext_lazy
+from django.utils.translation import gettext_lazy
 from django.views.generic import (ListView,
                                   CreateView,
                                   UpdateView,
@@ -32,7 +32,7 @@ class UpdateLabel(LoginRequiredMixin, CheckSignInMixin,
     model = Labels
     template_name = 'labels/update_label.html'
     form_class = LabelForm
-    success_message = gettext('Метка успешно изменена')
+    success_message = gettext_lazy('Метка успешно изменена')
     success_url = reverse_lazy('list_of_labels')
 
 
