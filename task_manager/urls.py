@@ -11,5 +11,6 @@ urlpatterns = [
     path('tasks/', include('task_manager.tasks.urls'), name='tasks'),
     path('login/', SignIn.as_view(), name='sign_in'),
     path('logout/', SignOut.as_view(), name='sign_out'),
+    path('api/v1/', include('task_manager.api.urls'), name='api'),
     path('admin/', admin.site.urls),
 ]
