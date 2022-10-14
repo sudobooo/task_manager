@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'task_manager.tasks',
     'task_manager.labels',
     'bootstrap4',
+    'rest_framework',
+    'task_manager.api',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Moscow'
 

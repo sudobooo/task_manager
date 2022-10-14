@@ -28,3 +28,6 @@ prepare-translation:
 
 complete-translation:
 	poetry run django-admin compilemessages
+
+createsuperuser:
+	poetry run python manage.py createsuperuser
