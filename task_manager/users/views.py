@@ -10,7 +10,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy, gettext
 from django.urls import reverse_lazy
-from rest_framework.generics import ListAPIView
 from django.views.generic.list import ListView
 from django.views.generic.edit import (CreateView,
                                        UpdateView,
