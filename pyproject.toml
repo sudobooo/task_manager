@@ -16,7 +16,7 @@ repository = "https://github.com/sudobooo/python-project-lvl4"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = "^4.0.6"
+Django = "^4.1.6"
 djangorestframework = "^3.14.0"
 python-dotenv = "^0.20.0"
 gunicorn = "^20.1.0"
